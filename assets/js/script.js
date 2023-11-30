@@ -1,9 +1,7 @@
-
 $(document).ready(function () {
-
   var saveTask = $(":button");
   var currentTime = parseInt(dayjs().format("HH"));
-  
+
   saveTask.on("click", function () {
     //grab the time-block and assign it to a var
     var timeBlockID = $(this).parent().attr("id");
@@ -13,13 +11,15 @@ $(document).ready(function () {
     var timeBlockContent = $(this).parent().children().eq(1).val();
     //write to local storage when save button is clicked
     localStorage.setItem(timeBlockID, timeBlockContent);
-   //TODO: use this logic to assign classes to time-blocks based on current time
-    if (currentTime > blockIDInt){
-      console.log("BEFORE");
-    } else if (currentTime < blockIDInt){
-      console.log("AFTER");
-    } else {
-      console.log("NOW");
+    //TODO: use this logic to assign classes to time-blocks based on current time
+    for (i = 9; i <= 17; i++) {
+      if (currentTime > blockIDInt) {
+        console.log("BEFORE");
+      } else if (currentTime < blockIDInt) {
+        console.log("AFTER");
+      } else {
+        console.log("NOW");
+      }
     }
   });
   // TODO: Add code to apply the past, present, or future class to each time
@@ -27,9 +27,7 @@ $(document).ready(function () {
   // attribute of each time-block be used to conditionally add or remove the
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
-  
-  
- 
+
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
