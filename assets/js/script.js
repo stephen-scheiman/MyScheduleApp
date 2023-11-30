@@ -1,7 +1,7 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-$(function () {
+$(document).ready(function () {
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -19,5 +19,15 @@ $(function () {
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
-  // TODO: Add code to display the current date in the header of the page.
+ 
+  // Use dayjs to get current time, format it, and display it in the header of the page
+  var dateTime = $("#currentDay");
+  setInterval(function () {
+    var currentTime = dayjs().format("MM/DD/YYYY HH:MM:ss A");
+    displayDate(currentTime);
+  }, 1000);
+
+  function displayDate(currentTime) {
+    dateTime.text(currentTime);
+  }
 });
