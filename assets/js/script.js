@@ -10,6 +10,7 @@ $(document).ready(function () {
   // useful when saving the description in local storage?
   //
   var saveTask = $(":button");
+  
   saveTask.on("click", function () {
     var timeBlockID = $(this).parent().attr("id");
     console.log(timeBlockID);
@@ -22,7 +23,15 @@ $(document).ready(function () {
   // attribute of each time-block be used to conditionally add or remove the
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
-  //
+  var currentTime = dayjs().format("HH");
+  if (currentTime > timeBlockID){
+    console.log("BEFORE");
+  }else if (currentTime < timeBlockID){
+    console.log("AFTER");
+  }else {
+    console.log("NOW");
+  }
+
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
