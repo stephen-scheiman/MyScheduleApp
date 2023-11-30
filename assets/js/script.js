@@ -21,9 +21,9 @@ $(document).ready(function () {
   //
  
   // Use dayjs to get current time, format it, and display it in the header of the page
-  var dateTime = $("#currentDay");
+  var dateTime = $('#currentDay');
   setInterval(function () {
-    var currentTime = dayjs().format("MM/DD/YYYY HH:MM:ss A");
+    var currentTime = dayjs().format('MM/DD/YYYY HH:MM:ss A');
     displayDate(currentTime);
   }, 1000);
 
