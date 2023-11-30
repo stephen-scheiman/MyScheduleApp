@@ -14,7 +14,8 @@ $(document).ready(function () {
     var timeBlockID = $(this).parent().attr("id");
     console.log(timeBlockID);
     var timeBlockContent = $(this).parent().children().eq(1).val();
-    console.log(timeBlockContent);
+    localStorage.setItem(timeBlockID, timeBlockContent);
+    console.log(typeof (timeBlockContent));
   });
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
