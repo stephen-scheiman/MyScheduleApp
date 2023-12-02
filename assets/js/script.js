@@ -58,7 +58,7 @@ $(document).ready(function () {
 
   // Use dayjs to get current time, format it, and display it in the header of the page
   setInterval(function () {
-    var currentTime = dayjs().format("dddd MMMM DD, YYYY HH:mma");
+    var currentTime = dayjs().format("dddd MMMM DD, YYYY hh:mma");
     displayDate(currentTime);
   }, 1000);
 
