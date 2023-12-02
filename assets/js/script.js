@@ -3,7 +3,8 @@ $(document).ready(function () {
   var tmp = "";
   var dateTime = $("#currentDay");
   var currentTime = dayjs().format("HH");
-
+ 
+// Save button actions
   saveTask.on("click", function () {
     //grab the time-block and assign it to a var
     var timeBlockID = $(this).parent().attr("id");
@@ -13,7 +14,8 @@ $(document).ready(function () {
     localStorage.setItem(timeBlockID, timeBlockContent);
   });
 
-  changeClassbyTime();
+  //Update the color scheme every 60 seconds to check for time change
+  setInterval(changeClassbyTime(), 60000);
 
   //This function compares the current time to the integer value of a time block and adds
   //the appropriate color class
@@ -21,16 +23,15 @@ $(document).ready(function () {
     for (i = 9; i <= 17; i++) {
       tmp = $("#hour-" + [i]);
       var tmpInt = parseInt(tmp.attr("id").match(/\d+/).shift());
-      if (tmpInt < currentTime){
+      if (tmpInt < currentTime) {
         tmp.addClass("past");
-      } else if (tmpInt > currentTime){
+      } else if (tmpInt > currentTime) {
         tmp.addClass("future");
       } else {
-        tmp.addClass("now");
+        tmp.addClass("present");
       }
     }
   }
-
   //This retrieves any items saved to local storage and renders them to the appropriate time-block
   for (i = 9; i <= 17; i++) {
     tmp = localStorage.getItem("hour-" + [i]);
@@ -57,5 +58,3 @@ $(document).ready(function () {
     dateTime.text(currentTime);
   }
 });
-
-
