@@ -3,8 +3,8 @@ $(document).ready(function () {
   var tmp = "";
   var dateTime = $("#currentDay");
   var current24Time = dayjs().format("HH");
- 
-// Save button actions
+
+  // Save button actions
   saveTask.on("click", function () {
     //grab the time-block and assign it to a var
     var timeBlockID = $(this).parent().attr("id");
@@ -12,6 +12,13 @@ $(document).ready(function () {
     var timeBlockContent = $(this).parent().children().eq(1).val();
     //write to local storage when save button is clicked
     localStorage.setItem(timeBlockID, timeBlockContent);
+    //write a fading success message to the header on local storage save
+    $("#successMessage")
+      .text("Successfully saved " + timeBlockContent + " to local storage!")
+      .fadeOut(3500, function () {
+        $("#successMessage").text(" ");
+        $("#successMessage").css("display", "block");
+      });
   });
 
   //Update the color scheme every 60 seconds to check for time change
@@ -32,6 +39,7 @@ $(document).ready(function () {
       }
     }
   }
+  
   //This retrieves any items saved to local storage and renders them to the appropriate time-block
   for (i = 9; i <= 17; i++) {
     tmp = localStorage.getItem("hour-" + [i]);

@@ -22,6 +22,10 @@ p {
   font-family: 'Luckiest Guy', cursive;
 }
 
+#successMessage {
+  color: green;
+}
+
 .description {
   white-space: pre-wrap;
 }
