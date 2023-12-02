@@ -2,7 +2,7 @@ $(document).ready(function () {
   var saveTask = $(":button");
   var tmp = "";
   var dateTime = $("#currentDay");
-  var currentTime = dayjs().format("HH");
+  var current24Time = dayjs().format("HH");
  
 // Save button actions
   saveTask.on("click", function () {
@@ -23,9 +23,9 @@ $(document).ready(function () {
     for (i = 9; i <= 17; i++) {
       tmp = $("#hour-" + [i]);
       var tmpInt = parseInt(tmp.attr("id").match(/\d+/).shift());
-      if (tmpInt < currentTime) {
+      if (tmpInt < current24Time) {
         tmp.addClass("past");
-      } else if (tmpInt > currentTime) {
+      } else if (tmpInt > current24Time) {
         tmp.addClass("future");
       } else {
         tmp.addClass("present");
@@ -50,7 +50,7 @@ $(document).ready(function () {
 
   // Use dayjs to get current time, format it, and display it in the header of the page
   setInterval(function () {
-    var currentTime = dayjs().format("MM/DD/YYYY HH:MM:ss");
+    var currentTime = dayjs().format("dddd MMMM DD, YYYY HH:mma");
     displayDate(currentTime);
   }, 1000);
 
